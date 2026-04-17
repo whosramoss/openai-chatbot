@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import Chat from '@/components/chat/Chat.vue'
+---
+
+<BaseLayout>
+  <main class="flex min-h-screen items-center justify-center px-2">
+    <Chat client:only="vue" />
+  </main>
+</BaseLayout>
