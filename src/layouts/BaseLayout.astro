@@ -1,0 +1,61 @@
+---
+import '../styles/globals.css'
+import '../styles/chat.css'
+import '../styles/animations.css'
+
+interface Props {
+  title?: string
+  description?: string
+  keywords?: string[]
+  author?: string
+  robots?: string
+  canonicalUrl?: string
+  ogImage?: string
+  ogType?: 'website' | 'article'
+  twitterCard?: 'summary' | 'summary_large_image'
+}
+
+const {
+  title = 'OpenAI Chatbot',
+  description = 'The chatbot developed with OpenAI API is the perfect solution for improving customer service and simplifying processes, 24 hours a day, 7 days a week.',
+  keywords = ['openai', 'chatbot', 'astro', 'vue', 'ai assistant'],
+  author = 'OpenAI Chatbot Team',
+  robots = 'index, follow',
+  canonicalUrl,
+  ogImage = '/favicon.svg',
+  ogType = 'website',
+  twitterCard = 'summary_large_image',
+} = Astro.props
+
+const resolvedCanonicalUrl = canonicalUrl ?? Astro.url.toString()
+const resolvedOgImageUrl = new URL(ogImage, Astro.url).toString()
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
+    <meta name="author" content={author} />
+    <meta name="robots" content={robots} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={resolvedCanonicalUrl} />
+    <meta property="og:image" content={resolvedOgImageUrl} />
+
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedOgImageUrl} />
+
+    <link rel="canonical" href={resolvedCanonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="green-drift-bg overflow-hidden">
+    <slot />
+  </body>
+</html>
