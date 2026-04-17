@@ -1,0 +1,50 @@
+@keyframes green-drift {
+  0% {
+    transform: translate3d(-12%, -10%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(10%, 8%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-12%, -10%, 0) scale(1);
+  }
+}
+
+.green-drift-bg {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.green-drift-bg::before {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  z-index: 0;
+  pointer-events: none;
+  /* Hex base: #042814, #061C10, #053622, #03140E, #000000 */
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgb(4 40 20 / 0.65) 0%,
+      rgb(6 28 16 / 0.38) 30%,
+      transparent 62%
+    ),
+    radial-gradient(
+      circle at 70% 65%,
+      rgb(5 54 34 / 0.5) 0%,
+      rgb(3 20 14 / 0.24) 34%,
+      transparent 58%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgb(0 0 0 / 0.4) 0%,
+      transparent 72%
+    );
+  animation: green-drift 14s ease-in-out infinite;
+}
+
+.green-drift-bg > * {
+  position: relative;
+  z-index: 1;
+}
