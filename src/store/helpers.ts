@@ -1,5 +1,5 @@
 import type { ChatMessage } from "../schemas/message";
-import type { ChatSetState } from "./chatStore.types";
+import type { ChatPatchState } from "./types";
 
 export const CHAT_ERROR_MESSAGES = {
   action: "It was not possible to obtain the answer now. Try again.",
@@ -36,7 +36,7 @@ export const getNextMockAssistantResponse = (
 };
 
 export const setSubmittingState = (
-  set: ChatSetState,
+  set: ChatPatchState,
   messages: ChatMessage[],
   userMessage: ChatMessage,
 ): void => {
@@ -49,7 +49,7 @@ export const setSubmittingState = (
 };
 
 export const setSuccessState = (
-  set: ChatSetState,
+  set: ChatPatchState,
   messages: ChatMessage[],
   content: string,
 ): void => {
@@ -65,7 +65,7 @@ export const setSuccessState = (
   });
 };
 
-export const setErrorState = (set: ChatSetState, message: string): void => {
+export const setErrorState = (set: ChatPatchState, message: string): void => {
   set({
     isLoading: false,
     errorMessage: message,

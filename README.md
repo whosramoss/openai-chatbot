@@ -6,7 +6,7 @@
 </h1>
 
 <p align="center">
-  A web chat app powered by OpenAI, built with Astro, Vue, Tailwind, and Zustand.
+  A web chat app powered by OpenAI, built with Astro, Vue, Tailwind, and Pinia.
   <br /> <br />
     <a href="#environment-variables">Environment Variables</a>
     ·
@@ -100,10 +100,9 @@ openai-chatbot/
 │   ├── schemas/
 │   │   └── message.ts            # shared schemas and types
 │   ├── store/
-│   │   ├── chatStore.ts          # Zustand store (state + submit flow)
-│   │   ├── chatStore.helpers.ts  # store helpers
-│   │   ├── chatStore.types.ts    # store types
-│   │   ├── useChatStore.ts       # Vue reactivity bridge
+│   │   ├── chatStore.ts          # Pinia store (state + submit flow)
+│   │   ├── helpers.ts            # store helpers
+│   │   ├── types.ts              # store types
 │   │   └── index.ts              # store layer exports
 │   └── styles/
 │       ├── globals.css
