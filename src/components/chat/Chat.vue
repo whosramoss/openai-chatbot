@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref, watch, nextTick } from "vue";
-import { useChatStore } from "@/store/useChatStore";
+import { useChatStore } from "@/store/chatStore";
+import type { ChatStore } from "@/store/types";
 import { mapAvatar } from "../../schemas/message";
 
-const store = useChatStore();
+const store: ChatStore = useChatStore();
 const scrollRef = ref<HTMLDivElement | null>(null);
 
 async function scrollToBottom() {
